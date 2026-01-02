@@ -4,32 +4,195 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Velora Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
-body{background:#fff;color:#000;line-height:1.6}
-nav{position:fixed;top:0;width:100%;background:#fff;border-bottom:1px solid #eaeaea;z-index:10}
-nav ul{display:flex;justify-content:center;gap:24px;padding:16px;list-style:none}
-nav a{text-decoration:none;color:#000;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
-section{padding:120px 24px 80px;max-width:1100px;margin:auto}
-.hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;gap:24px}
-.hero h1{font-size:44px;max-width:700px}
-.hero p{max-width:500px;color:#444}
-.cta{border:1px solid #000;padding:14px 28px;text-decoration:none;color:#000;width:fit-content}
-.cta:hover{background:#000;color:#fff}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
-.product{border:1px solid #eaeaea;padding:16px}
-.product img{width:100%;height:180px;background:#f5f5f5;object-fit:cover}
-.buy{margin-top:12px}
-.buy a{display:inline-block;border:1px solid #000;padding:10px 20px;text-decoration:none;color:#000}
-.buy a:hover{background:#000;color:#fff}
-.steps ol{margin-left:20px}
-form{max-width:500px}
-input,textarea{width:100%;padding:12px;margin-bottom:16px;border:1px solid #ccc}
-button{border:1px solid #000;padding:12px 24px;background:#fff;cursor:pointer}
-button:hover{background:#000;color:#fff}
-footer{text-align:center;padding:40px;font-size:13px;color:#666}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#fff;
+  color:#111;
+  font-family:'Inter',sans-serif;
+  line-height:1.7;
+}
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  z-index:10;
+}
+
+nav ul{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  padding:20px;
+  list-style:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:#111;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:160px 24px;
+}
+
+.hero{
+  max-width:720px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  line-height:1.2;
+  margin-bottom:24px;
+}
+
+.hero p{
+  font-size:18px;
+  color:#555;
+  margin-bottom:40px;
+}
+
+.cta{
+  display:inline-block;
+  padding:14px 34px;
+  border:1px solid #111;
+  text-decoration:none;
+  color:#111;
+}
+
+.cta:hover{
+  background:#111;
+  color:#fff;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:60px;
+}
+
+.product img{
+  width:100%;
+  height:220px;
+  background:#f3f3f3;
+  margin-bottom:20px;
+}
+
+.product h3{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  margin-bottom:6px;
+}
+
+.product p{
+  color:#666;
+  margin-bottom:18px;
+}
+
+.buy-btn{
+  background:none;
+  border:none;
+  border-bottom:1px solid #111;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.steps{max-width:640px}
+
+.steps ol{margin-left:20px;color:#444}
+
+form{max-width:420px}
+
+input,textarea{
+  width:100%;
+  border:none;
+  border-bottom:1px solid #ccc;
+  padding:14px 0;
+  margin-bottom:32px;
+}
+
+button{
+  background:none;
+  border:1px solid #111;
+  padding:14px 32px;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  padding:80px;
+  font-size:13px;
+  color:#777;
+}
+
+/* POPUP */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.45);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+}
+
+.modal-box{
+  background:#fff;
+  padding:40px;
+  max-width:420px;
+  width:90%;
+  text-align:center;
+}
+
+.modal-box h3{
+  font-family:'Playfair Display',serif;
+  margin-bottom:10px;
+}
+
+.modal-box p{
+  color:#555;
+  margin-bottom:24px;
+}
+
+.modal-actions{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+}
+
+.modal-actions a,
+.modal-actions button{
+  padding:12px 28px;
+  border:1px solid #111;
+  background:none;
+  cursor:pointer;
+  text-decoration:none;
+  color:#111;
+}
+
+.modal-actions a:hover,
+.modal-actions button:hover{
+  background:#111;
+  color:#fff;
+}
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -43,65 +206,90 @@ footer{text-align:center;padding:40px;font-size:13px;color:#666}
 
 <section id="home">
 <div class="hero">
-<h1>Premium Digital Assets Crafted with Precision</h1>
-<p>Minimal, timeless digital products for modern creators.</p>
-<a class="cta" href="#products">View Products</a>
+<h1>Quietly Crafted Digital Essentials</h1>
+<p>Premium minimalist assets for designers and modern brands.</p>
+<a class="cta" href="#products">Explore Collection</a>
 </div>
 </section>
 
 <section id="products">
-<h2>Products</h2><br>
 <div class="products">
+
 <div class="product">
-<img alt="">
+<img>
 <h3>Minimal UI Template</h3>
 <p>RM15</p>
-<div class="buy">
-<a href="payment.html?product=Minimal%20UI%20Template&price=15">Buy Now</a>
+<button class="buy-btn" onclick="openModal('Minimal UI Template',15)">Buy</button>
 </div>
-</div>
+
 <div class="product">
-<img alt="">
+<img>
 <h3>Website Wireframe Kit</h3>
 <p>RM18</p>
-<div class="buy">
-<a href="payment.html?product=Website%20Wireframe%20Kit&price=18">Buy Now</a>
+<button class="buy-btn" onclick="openModal('Website Wireframe Kit',18)">Buy</button>
 </div>
-</div>
+
 <div class="product">
-<img alt="">
+<img>
 <h3>Brand Identity Pack</h3>
 <p>RM25</p>
-<div class="buy">
-<a href="payment.html?product=Brand%20Identity%20Pack&price=25">Buy Now</a>
+<button class="buy-btn" onclick="openModal('Brand Identity Pack',25)">Buy</button>
 </div>
-</div>
+
 </div>
 </section>
 
 <section id="how">
+<div class="steps">
 <h2>How to Buy</h2><br>
 <ol>
-<li>Click Buy Now for your product</li>
-<li>Pay via Touch ’n Go QR code</li>
-<li>Submit payment proof (screenshot)</li>
-<li>We verify your payment (one click) and send download link automatically</li>
+<li>Select a product</li>
+<li>Pay via Touch ’n Go</li>
+<li>Submit payment proof</li>
+<li>Receive download after confirmation</li>
 </ol>
+</div>
 </section>
 
 <section id="contact">
 <h2>Contact</h2><br>
 <form>
-<input required placeholder="Name">
-<input type="email" required placeholder="Email">
-<textarea required placeholder="Message"></textarea>
+<input placeholder="Name" required>
+<input type="email" placeholder="Email" required>
+<textarea placeholder="Message" required></textarea>
 <button>Send</button>
 </form>
 </section>
 
 <footer>
-© 2026 Velora Studio. All rights reserved.
+© 2026 Velora Studio
 </footer>
 
+<!-- POPUP -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="modalProduct"></h3>
+    <p id="modalPrice"></p>
+    <div class="modal-actions">
+      <a id="confirmBuy">Confirm</a>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(product, price){
+  document.getElementById("modalProduct").textContent = product;
+  document.getElementById("modalPrice").textContent = "RM" + price;
+  document.getElementById("confirmBuy").href =
+    "payment.html?product=" + encodeURIComponent(product) + "&price=" + price;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
 </body>
-</html>
+  </html>
