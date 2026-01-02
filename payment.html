@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora Studio - Payment</title>
+<style>
+body{font-family:Arial;background:#fff;color:#000;padding:40px}
+.box{max-width:500px;margin:auto;border:1px solid #eaeaea;padding:24px;text-align:center}
+h2{margin-bottom:16px}
+.qr{width:100%;max-width:280px;margin:24px auto;display:block}
+a{display:block;margin-top:16px;border:1px solid #000;padding:12px;text-decoration:none;color:#000}
+a:hover{background:#000;color:#fff}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Touch ’n Go Payment</h2>
+<p id="product"></p>
+<p id="price"></p>
+<img id="tngQR" class="qr" alt="TNG QR code">
+<p>After payment, submit your proof below.</p>
+<a id="formLink" target="_blank">Submit Payment Proof</a>
+</div>
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("product").textContent = "Product: " + params.get("product");
+document.getElementById("price").textContent = "Amount: RM" + params.get("price");
+
+// QR code image
+document.getElementById("tngQR").src = "tng-qr.jpg";
+
+// Hardcoded Google Form link
+document.getElementById("formLink").href = "https://docs.google.com/forms/d/e/1FAIpQLSdW0Ob_UgGXTFIM2CCnxSwC-SgpEgEmh4wI6YZ746__VYexow/viewform?usp=publish-editor";
+document.getElementById("formLink").textContent = "Submit Payment Proof";
+</script>
+</body>
+</html>
