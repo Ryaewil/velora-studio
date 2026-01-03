@@ -5,386 +5,250 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Velora Studio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* Global */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   font-family: 'Inter', sans-serif;
   background: #fff;
   color: #111;
-  line-height: 1.6;
 }
 
-/* Navigation */
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 1rem 2rem;
+  padding: 28px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
 }
-nav .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
+
 nav ul {
-  display: flex;
-  gap: 2rem;
   list-style: none;
+  display: flex;
+  gap: 40px;
 }
+
 nav a {
   text-decoration: none;
-  color: #111;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  font-size: 14px;
+  color: #888;
 }
-nav a:hover { color: #555; }
 
-/* Sections */
-section { padding: 6rem 2rem; max-width: 1100px; margin: auto; }
+nav a:hover { color: #111; }
 
-/* Hero */
 .hero {
   text-align: center;
-  padding-top: 8rem;
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-.hero p {
-  max-width: 600px;
-  margin: auto;
-  color: #555;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-.hero a {
-  display: inline-block;
-  padding: 0.85rem 2.5rem;
-  border: 1px solid #111;
-  font-weight: 500;
-  transition: all 0.25s ease;
-}
-.hero a:hover {
-  background: #111;
-  color: #fff;
+  padding: 140px 20px 160px;
 }
 
-/* Products */
-.products h2 { text-align: center; margin-bottom: 3rem; font-family: 'Playfair Display', serif; font-size: 2rem; }
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.hero h1 span {
+  display: block;
+  color: #b3b3b3;
+  font-weight: 400;
+}
+
+.hero a {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 38px;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.products {
+  padding: 100px 60px;
+}
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
 }
 
 .product-card {
-  border: 1px solid #eee;
-  padding: 1.5rem;
-  text-align: center;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border-radius: 8px;
-}
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-.product-card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 6px;
+.product-image {
+  height: 200px;
+  background: #f2f2f2;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .product-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 18px;
 }
 
 .product-card p {
-  color: #555;
-  font-weight: 500;
+  font-size: 14px;
+  color: #888;
 }
 
-/* Slide-down Buy Button */
 .buy-area {
-  overflow: hidden;
   max-height: 0;
-  transition: max-height 0.35s ease;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
-.product-card.active .buy-area { max-height: 80px; }
+
+.product-card.active .buy-area {
+  max-height: 120px;
+}
+
+.buy-area span {
+  display: block;
+  margin: 14px 0 10px;
+  font-size: 14px;
+}
 
 .buy-btn {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
-  background: #111;
+  padding: 10px 28px;
+  background: #000;
   color: #fff;
+  border-radius: 999px;
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: background 0.25s ease;
+  font-size: 13px;
 }
-.buy-btn:hover { background: #555; }
 
-/* How to Buy */
-.steps {
-  max-width: 600px;
-  margin: auto;
-  line-height: 1.8;
-  font-size: 1.05rem;
-  color: #555;
-}
-.steps li { margin-bottom: 0.8rem; }
-
-/* Contact */
-form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-input, textarea {
-  padding: 0.85rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-button {
-  padding: 0.85rem;
-  border: none;
-  background: #111;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 6px;
-  font-weight: 500;
-}
-button:hover { background: #555; }
-
-/* Footer */
 footer {
-  text-align: center;
-  padding: 4rem 2rem;
-  color: #777;
-  font-size: 0.9rem;
+  padding: 100px 60px;
+  border-top: 1px solid #eee;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 40px;
+}
+
+footer h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+footer a {
+  display: block;
+  font-size: 13px;
+  color: #888;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+footer a:hover { color: #111; }
+
+@media (max-width: 768px) {
+  nav, .products, footer { padding: 60px 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Navigation -->
 <nav>
-  <div class="logo">Velora Studio</div>
+  <strong>Velora®</strong>
   <ul>
-    <li><a href="#home">Home</a></li>
+    <li><a href="#">Home</a></li>
     <li><a href="#products">Products</a></li>
-    <li><a href="#how">How to Buy</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#">How to Buy</a></li>
   </ul>
 </nav>
 
-<!-- Hero -->
-<section id="home" class="hero">
-  <h1>Minimal Digital Products for Modern Creators</h1>
-  <p>Timeless, clean, and thoughtfully crafted digital assets to elevate your projects.</p>
+<section class="hero">
+  <h1>
+    Minimalist Creativity.
+    <span>Elegant digital solutions for brands.</span>
+  </h1>
   <a href="#products">View Products</a>
 </section>
 
-<!-- Products -->
-<section id="products" class="products">
-  <h2>Products</h2>
+<section class="products" id="products">
   <div class="product-grid">
 
     <div class="product-card" onclick="toggleBuy(this)">
-      <img src="assets/product1.jpg" alt="Minimal Website Template">
-      <h3>Minimal Website Template</h3>
-      <p>RM29</p>
+      <div class="product-image"></div>
+      <h3>Minimal Invoice</h3>
+      <p>Elegant invoice templates</p>
       <div class="buy-area">
-        <a href="payment.html" class="buy-btn">Buy Now</a>
+        <span>RM29</span>
+        <a class="buy-btn"
+           href="payment.html?product=Minimal%20Invoice&price=29">
+           Buy Now
+        </a>
       </div>
     </div>
 
     <div class="product-card" onclick="toggleBuy(this)">
-      <img src="assets/product2.jpg" alt="Digital UI Kit">
-      <h3>Digital UI Kit</h3>
-      <p>RM39</p>
+      <div class="product-image"></div>
+      <h3>Brand Mockup</h3>
+      <p>Premium presentation mockups</p>
       <div class="buy-area">
-        <a href="payment.html" class="buy-btn">Buy Now</a>
+        <span>RM39</span>
+        <a class="buy-btn"
+           href="payment.html?product=Brand%20Mockup&price=39">
+           Buy Now
+        </a>
       </div>
     </div>
 
     <div class="product-card" onclick="toggleBuy(this)">
-      <img src="assets/product3.jpg" alt="Brand Identity Pack">
-      <h3>Brand Identity Pack</h3>
-      <p>RM55</p>
+      <div class="product-image"></div>
+      <h3>UI Kit</h3>
+      <p>Clean modern UI components</p>
       <div class="buy-area">
-        <a href="payment.html" class="buy-btn">Buy Now</a>
+        <span>RM55</span>
+        <a class="buy-btn"
+           href="payment.html?product=UI%20Kit&price=55">
+           Buy Now
+        </a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- How to Buy -->
-<section id="how">
-  <h2>How to Buy</h2>
-  <ol class="steps">
-    <li>Click a product to reveal the Buy button</li>
-    <li>Scan Touch ’n Go QR code</li>
-    <li>Upload payment proof</li>
-    <li>Receive your download link after confirmation</li>
-  </ol>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-  <h2>Contact</h2>
-  <form>
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea rows="4" placeholder="Message"></textarea>
-    <button type="submit">Send</button>
-  </form>
-</section>
-
-<!-- Footer -->
 <footer>
-  © 2026 Velora Studio
+  <div class="footer-grid">
+    <div>
+      <h4>Products</h4>
+      <a>Minimal Invoice</a>
+      <a>Brand Mockup</a>
+      <a>UI Kit</a>
+    </div>
+    <div>
+      <h4>Studio</h4>
+      <a>About</a>
+      <a>How to Buy</a>
+      <a>Contact</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a>Privacy Policy</a>
+      <a>Terms</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a>Email</a>
+      <a>Instagram</a>
+    </div>
+  </div>
 </footer>
 
-<!-- JS -->
 <script>
 function toggleBuy(card) {
-  // Close other cards
-  document.querySelectorAll(".product-card").forEach(c => {
-    if (c !== card) c.classList.remove("active");
+  document.querySelectorAll('.product-card').forEach(c => {
+    if (c !== card) c.classList.remove('active');
   });
-  // Toggle current card
-  card.classList.toggle("active");
-}
-</script>
-
-</body>
-</html>  background: black;
-  color: white;
-}
-
-/* HOW + CONTACT */
-.steps {
-  max-width: 600px;
-  margin: auto;
-  line-height: 1.8;
-}
-
-form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-input, textarea {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 0.75rem;
-  background: black;
-  color: white;
-  border: none;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-  <strong>Velora Studio</strong>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#how">How to Buy</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<section id="home" class="hero">
-  <h1>Minimal Digital Products for Modern Creators</h1>
-  <p>Timeless, clean, and thoughtfully crafted digital assets.</p>
-  <a href="#products">View Products</a>
-</section>
-
-<section id="products" class="products">
-  <h2>Products</h2>
-
-  <div class="product-grid">
-    <div class="product-card" onclick="toggleBuy(this)">
-      <img src="assets/product1.jpg">
-      <h3>Minimal Website Template</h3>
-      <p>RM29</p>
-      <div class="buy-area">
-        <a href="payment.html" class="buy-btn">Buy Now</a>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="toggleBuy(this)">
-      <img src="assets/product2.jpg">
-      <h3>Digital UI Kit</h3>
-      <p>RM39</p>
-      <div class="buy-area">
-        <a href="payment.html" class="buy-btn">Buy Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <h2>How to Buy</h2>
-  <div class="steps">
-    1. Click a product<br>
-    2. Scan Touch ’n Go QR<br>
-    3. Upload payment proof<br>
-    4. Receive your download link
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <form>
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea rows="4" placeholder="Message"></textarea>
-    <button type="submit">Send</button>
-  </form>
-</section>
-
-<script>
-function toggleBuy(card) {
-  document.querySelectorAll(".product-card").forEach(c => {
-    if (c !== card) c.classList.remove("active");
-  });
-  card.classList.toggle("active");
+  card.classList.toggle('active');
 }
 </script>
 
