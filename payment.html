@@ -6,74 +6,54 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #fafafa;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-
     .card {
-      background: white;
+      background: #fff;
       padding: 24px;
-      border-radius: 10px;
-      width: 320px;
+      border-radius: 8px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+      width: 320px;
     }
-
     button {
-      margin-top: 20px;
       padding: 12px;
       width: 100%;
-      font-size: 16px;
       background: black;
       color: white;
       border: none;
       border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.85;
-    }
-
-    .info {
-      font-size: 14px;
-      margin-top: 6px;
-      color: #444;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h2>Confirm Payment</h2>
-
-    <div class="info" id="name"></div>
-    <div class="info" id="product"></div>
-    <div class="info" id="price"></div>
-
-    <button id="confirmBtn">CONFIRM PAYMENT</button>
-  </div>
+<div class="card">
+  <h2>Confirm Payment</h2>
+  <p id="pProduct"></p>
+  <p id="pPrice"></p>
+  <button id="btnGo">Submit Payment Proof</button>
+</div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
-
-  const name = params.get("name") || "";
-  const email = params.get("email") || "";
   const product = params.get("product") || "";
   const price = params.get("price") || "";
 
-  document.getElementById("name").textContent = "Name: " + name;
-  document.getElementById("product").textContent = "Product: " + product;
-  document.getElementById("price").textContent = "Price: " + price;
+  document.getElementById("pProduct").textContent = "Product: " + product;
+  document.getElementById("pPrice").textContent = "Amount: " + price;
 
-  document.getElementById("confirmBtn").onclick = () => {
+  document.getElementById("btnGo").onclick = () => {
     const formURL =
-      "https://docs.google.com/forms/d/e/1FAIpQLSdW0Ob_UgGXTFIM2CCnxSwC-SgpEgEmh4wI6YZ746__VYexow/viewform" +
-      "?entry.1429750535=" + encodeURIComponent(name) +
-      "&entry.610860266=" + encodeURIComponent(email) +
+      "https://docs.google.com/forms/d/e/1FAIpQLSdW0Ob_UgGXTFIM2CCnxSwC-SgpEgEmh4wI6YZ746__VYexow/viewform?usp=pp_url" +
       "&entry.412222354=" + encodeURIComponent(product) +
       "&entry.322202340=" + encodeURIComponent(price);
 
