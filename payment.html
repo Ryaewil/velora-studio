@@ -3,36 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velora Studio - Payment</title>
+<title>Payment | Velora</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-body{font-family:Arial;background:#fff;color:#000;padding:40px}
-.box{max-width:500px;margin:auto;border:1px solid #eaeaea;padding:24px;text-align:center}
-h2{margin-bottom:16px}
-.qr{width:100%;max-width:280px;margin:24px auto;display:block}
-a{display:block;margin-top:16px;border:1px solid #000;padding:12px;text-decoration:none;color:#000}
-a:hover{background:#000;color:#fff}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.container {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: #fafafa;
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+}
+
+.qr {
+  background: #eaeaea;
+  height: 200px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+h1 { font-size: 22px; margin-bottom: 10px; }
+
+p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.details {
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 36px;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer {
+  margin-top: 80px;
+  text-align: center;
+}
 </style>
 </head>
+
 <body>
-<div class="box">
-<h2>Touch ’n Go Payment</h2>
-<p id="product"></p>
-<p id="price"></p>
-<img id="tngQR" class="qr" alt="TNG QR code">
-<p>After payment, submit your proof below.</p>
-<a id="formLink" target="_blank">Submit Payment Proof</a>
+
+<div class="container">
+
+  <div class="card">
+
+    <!-- Replace with your QR image -->
+    <!-- <img src="assets/tng-qr.jpg" class="qr"> -->
+    <div class="qr"></div>
+
+    <h1>Scan QR to Pay</h1>
+    <p>
+      Scan the QR code using Touch 'n Go or your banking app.
+      After payment, submit your proof for verification.
+    </p>
+
+    <div class="details">
+      <strong id="product"></strong><br>
+      Amount: RM<span id="price"></span><br>
+      Order ID: <span id="orderId"></span>
+    </div>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW0Ob_UgGXTFIM2CCnxSwC-SgpEgEmh4wI6YZ746__VYexow/viewform"
+       class="btn">
+       Send Proof
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <h2>Purchase Completed?</h2>
+    <p>Send us your proof of payment after transaction.</p>
+  </div>
+
 </div>
+
 <script>
 const params = new URLSearchParams(window.location.search);
-document.getElementById("product").textContent = "Product: " + params.get("product");
-document.getElementById("price").textContent = "Amount: RM" + params.get("price");
 
-// QR code image
-document.getElementById("tngQR").src = "tng-qr.jpg";
+const product = params.get("product") || "Product";
+const price = params.get("price") || "0";
 
-// Hardcoded Google Form link
-document.getElementById("formLink").href = "https://docs.google.com/forms/d/e/1FAIpQLSdW0Ob_UgGXTFIM2CCnxSwC-SgpEgEmh4wI6YZ746__VYexow/viewform?usp=publish-editor";
-document.getElementById("formLink").textContent = "Submit Payment Proof";
+const orderId =
+  "VL-" +
+  Date.now().toString().slice(-6) +
+  Math.floor(Math.random() * 100);
+
+document.getElementById("product").textContent = product;
+document.getElementById("price").textContent = price;
+document.getElementById("orderId").textContent = orderId;
 </script>
+
 </body>
 </html>
